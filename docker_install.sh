@@ -3,7 +3,7 @@
 # Actualizar e instalar paquetes
 sudo apt update
 sudo apt install -y ca-certificates curl gnupg
-sudo install -m 0755 -d /etc/apt/keyrings
+sudo install -y -m 0755 -d /etc/apt/keyrings
 
 # Descargar el archivo docker gpg
 curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
@@ -17,4 +17,4 @@ echo \
 
 # Instalar los paquetes docker
 sudo apt update
-sudo apt install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+sudo apt install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
