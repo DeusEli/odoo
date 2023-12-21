@@ -5,7 +5,7 @@ sudo apt update
 sudo apt install -y ca-certificates curl gnupg
 
 # Crear directorio para las claves GPG
-sudo install -y -m 0755 -d /etc/apt/keyrings
+sudo install -m 0755 -d /etc/apt/keyrings
 
 # Descargar el archivo GPG de Docker y colocarlo en el directorio creado
 curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
