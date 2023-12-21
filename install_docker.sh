@@ -1,7 +1,6 @@
 #!/bin/bash
 
-# Establecer DEBIAN_FRONTEND para evitar mensajes de debconf
-export DEBIAN_FRONTEND=noninteractive
+
 
 # Actualizar e instalar paquetes necesarios
 sudo apt update
