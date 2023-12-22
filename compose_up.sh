@@ -7,7 +7,7 @@ export NGINX_SERVER_NAME=$1
 docker compose up -d
 
 # Cambiar los permisos de la carpeta /var/lib/odoo
-if docker exec_result=$(docker exec -ti -u root odoo16 chown -R odoo:odoo /var/lib/odoo 2>&1); then
+if exec_result=$(docker exec -ti -u root odoo16 chown -R odoo:odoo /var/lib/odoo 2>&1); then
     echo "Cambio de permisos exitoso"
 else
     echo "Error al cambiar los permisos. Detalles del error: $docker_exec_result"
