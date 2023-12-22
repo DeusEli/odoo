@@ -6,16 +6,17 @@ export NGINX_SERVER_NAME=$1
 # Levantar los contenedores
 docker compose up -d
 
-# Esperar a que los contenedores estén en funcionamiento
-echo "Esperando a que los contenedores estén en funcionamiento..."
-while [ "$(docker inspect -f '{{.State.Status}}' odoo16 2>/dev/null)" != "running" ]; do
-    sleep 1
-done
-echo "Los contenedores están en funcionamiento."
-
 # Cambiar los permisos de la carpeta /var/lib/odoo
-if docker exec -ti -u root odoo16 chown -R odoo:odoo /var/lib/odoo; then
+if docker exec_result=$(docker exec -ti -u root odoo16 chown -R odoo:odoo /var/lib/odoo 2>&1); then
     echo "Cambio de permisos exitoso"
 else
-    echo "Error al cambiar los permisos"
+    echo "Error al cambiar los permisos. Detalles del error: $docker_exec_result"
+    sleep 5  # Espera 5 segundos antes de volver a intentar
+    
+    # Segundo intento
+    if docker exec_result=$(docker exec -ti -u root odoo16 chown -R odoo:odoo /var/lib/odoo 2>&1); then
+        echo "Cambio de permisos exitoso"
+    else
+        echo "Error al cambiar los permisos. Detalles del error: $docker_exec_result"
+    fi
 fi
