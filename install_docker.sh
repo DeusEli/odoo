@@ -52,3 +52,11 @@ else
     echo "Hubo un problema durante la instalación de Docker. Por favor, verifica y corrige los errores."
     exit 1
 fi
+
+# Eliminar carpeta odoo
+if rm -rf odoo/; then
+    echo "Se eliminó la carpeta Odoo"
+else
+    echo "Hubo un problema para eliminar la carpeta odoo"
+    exit 1
+fi
