@@ -1,7 +1,10 @@
 #!/bin/bash
 
-# Crear variable de entorno para utilzar en la configuración de NginX
-export NGINX_SERVER_NAME=$1
+# Crear variable de entorno para utilzar en el docker-compose.yml
+export CUSTOMER=$1
+export ODOO_VERSION=$2
+export PORT=$3
+export NGINX_SERVER_NAME=$4
 
 # Levantar los contenedores
 if docker compose up -d; then
